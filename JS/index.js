@@ -485,3 +485,163 @@ function manager() {
   manager.doSomethingFun();
   return manager;
 }
+
+// Iterating Arrays and Objects
+
+// Task 1
+const dairy = [
+  "cheese",
+  "sour cream",
+  "milk",
+  "yogurt",
+  "ice cream",
+  "milkshake",
+];
+function logDairy() {
+  for (var i of dairy) {
+    console.log(i);
+  }
+}
+logDairy();
+
+// Task 2
+const animal = {
+  canJump: true,
+};
+
+const bird = Object.create(animal);
+bird.canFly = true;
+bird.hasFeathers = true;
+
+function birdCan() {
+  for (var prop of Object.keys(bird)) {
+    console.log(prop + ": " + bird[prop]);
+  }
+}
+birdCan();
+// Task 3
+function animalCan() {
+  for (var props in bird) {
+    console.log(props + ": " + bird[props]);
+  }
+}
+animalCan();
+
+// Rest Operator
+
+let veggies = ["onion", "parsley"];
+veggies = [...veggies, "carrot", "beetroot"];
+console.log(veggies);
+
+// Spread Operator
+
+const fruits1 = ["apples", "pears"];
+const fruits2 = [...fruits];
+fruits1.pop();
+console.log(fruits1, "not", fruits2);
+
+// Event Handling
+
+// var h1 = document.querySelector("h1");
+// var arr = ["Example Domain", "First Click", "Second Click", "Third Click"];
+// function handleClicks() {
+//   switch (h1.innerText) {
+//     case arr[0]:
+//       h1.innerText = arr[1];
+//       break;
+//     case arr[1]:
+//       h1.innerText = arr[2];
+//       break;
+//     case arr[2]:
+//       h1.innerText = arr[3];
+//       break;
+//     default:
+//       h1.innerText = arr[0];
+//   }
+// }
+
+// h1.addEventListener("click", handleClicks);
+
+// Testing
+
+// Task 1: Code the timesTwo function declaration
+function timesTwo(num) {
+  return num * 2;
+}
+// Task 2: Export the timesTwo function as a module
+module.exports = timesTwo;
+
+// The Test
+
+// const timesTwo = require("./timesTwo");
+
+// // Write the first test
+// test("returns the number times 2", () => {
+//   expect(timesTwo(10)).toBe(20);
+// });
+
+// Meta Final
+
+// Given variables
+const dishData = [
+  {
+    name: "Italian pasta",
+    price: 9.55,
+  },
+  {
+    name: "Rice with veggies",
+    price: 8.65,
+  },
+  {
+    name: "Chicken with potatoes",
+    price: 15.55,
+  },
+  {
+    name: "Vegetarian Pizza",
+    price: 6.45,
+  },
+];
+const tax = 1.2;
+
+// Implement getPrices()
+function getPrices(taxBoolean) {
+  // Looping over objects
+  for (var i = 0; i < dishData.length; i++) {
+    var finalPrice;
+
+    if (taxBoolean == true) {
+      // Multiplying object prices with tax an assigning it to finalPrice
+      finalPrice = dishData[i].price * tax;
+    } else if (taxBoolean == false) {
+      // No tax if false
+      finalPrice = dishData[i].price;
+    } else {
+      console.log("You need to pass a boolean to the getPrices call!");
+      return;
+    }
+
+    console.log(`Dish: ${dishData[i].name} Price: $${finalPrice}`);
+  }
+}
+
+// Implement getDiscount()
+function getDiscount(taxBoolean, guests) {
+  getPrices(taxBoolean);
+  if (typeof guests == "number" && guests > 0 && guests < 30) {
+    var discount = 0;
+
+    if (guests < 5) {
+      discount = 5;
+    } else if (guests >= 5) {
+      discount = 10;
+    }
+
+    console.log(`Discount is: $${discount}`);
+  } else {
+    console.log("The second argument must be a number between 0 and 30");
+  }
+}
+
+// Call getDiscount()
+getDiscount(true, 2);
+getDiscount(false, 10);
