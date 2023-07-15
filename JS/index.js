@@ -363,3 +363,125 @@ console.log(temp);
 //     console.log(input.value);
 //   }
 // }
+
+// Meta Assignments
+
+// Defensive Programming
+
+function addTwoNums(a, b) {
+  try {
+    if (typeof a != "number") {
+      throw new ReferenceError("the first argument is not a number");
+    } else if (typeof b != "number") {
+      throw new ReferenceError("the second argument is not a number");
+    } else {
+      console.log(a + b);
+    }
+  } catch (err) {
+    console.log("Error!", err);
+  }
+}
+addTwoNums(5, "5");
+console.log("It still works");
+
+function letterFinder(word, match) {
+  var condition1 = typeof word == "string" && word.length >= 2; //if the word is a string and the length is greater than or equal to 2
+  var condition2 = typeof match == "string" && match.length == 1; //if the match is a string and the length is equal to 1
+  if (condition1 && condition2) {
+    //if both condition matches
+    for (var i = 0; i < word.length; i++) {
+      if (word[i] == match) {
+        //check if the character at this i position in the word is equal to the match
+        console.log("Found the", match, "at", i);
+      } else {
+        console.log("---No match found at", i);
+      }
+    }
+  } else {
+    //if the requirements don't match
+    console.log("Please pass correct arguments to the function");
+  }
+}
+letterFinder([], []);
+letterFinder("cat", "c");
+
+// Functional Task
+
+// Task 1: Build a function-based console log message generator
+function consoleStyler(color, background, fontSize, txt) {
+  var message = "%c" + txt;
+  var style = `color: ${color};`;
+  style += `background: ${background};`;
+  style += `font-size: ${fontSize};`;
+  console.log(message, style);
+}
+
+// Task 2: Build another console log message generator
+function celebrateStyler(reason) {
+  let fontStyle = "color: tomato; font-size:50px";
+  if (reason == "birthday") {
+    console.log(`%cHappy birthday`, fontStyle);
+  } else if (reason == "champions") {
+    console.log(`%cCongrats on the title!`, fontStyle);
+  } else {
+    console.log(`message`, `style`);
+  }
+}
+
+// Task 3: Run both the consoleStyler and the celebrateStyler functions
+consoleStyler(`'#1d5c63'`, `'#ede6db'`, `'40px'`, ` 'Congrats!'`);
+celebrateStyler(`'birthday'`);
+
+// Task 4: Insert a congratulatory and custom message
+function styleAndCelebrate() {
+  consoleStyler(`'ef7c8e'`, `'fae8e0'`, `'30px'`, `'You made it!'`);
+  celebrateStyler("champions");
+}
+// Call styleAndCelebrate
+styleAndCelebrate();
+
+// Dealing with Objects
+
+// Task 1: Code a Person class
+class Person {
+  constructor(name = "Tom", age = 20, energy = 100) {
+    this.name = name;
+    this.age = age;
+    this.energy = energy;
+  }
+
+  sleep() {
+    this.energy += 10;
+  }
+
+  doSomethingFun() {
+    this.energy -= 10;
+  }
+}
+
+// Task 2: Code a Worker class
+class Worker extends Person {
+  constructor(name, age, energy, xp = 0, hourlyWage = 10) {
+    super(name, age, energy);
+    this.xp = xp;
+    this.hourlyWage = 10;
+  }
+
+  goToWork() {
+    this.xp += 10;
+  }
+}
+
+// Task 3: Code an intern object, run methods
+function intern() {
+  var intern = new Worker("Bob", 21, 110, 0, 10);
+  intern.goToWork();
+  return intern;
+}
+
+// Task 4: Code a manager object, methods
+function manager() {
+  var manager = new Worker("Alice", 30, 120, 100, 30);
+  manager.doSomethingFun();
+  return manager;
+}
