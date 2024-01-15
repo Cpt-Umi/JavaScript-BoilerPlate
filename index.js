@@ -563,6 +563,12 @@ function arrFind() {
         arr.findLastIndex((value) => value > 20)
     );
     console.log("IndexOf: ", arr.indexOf(21));
+    console.log("LastIndexOf: ", arr.lastIndexOf(21));
+    console.log("Includes: ", arr.includes(21));
+    console.log(
+        "Some: ",
+        arr.some((x) => x > 20)
+    );
 }
 
 // arrFind();
@@ -609,3 +615,237 @@ function arrFrom() {
 }
 
 // arrFrom();
+
+// Array.isArray()
+// Returns a boolean.
+
+function arrIsArray() {
+    const arr = ["Hello", "Fren", "World"];
+    const notAnArrr = {};
+    console.log(Array.isArray(arr));
+}
+
+// arrIsArray();
+
+// Array.join()
+// Returns a new string by joining all the values of the array
+
+function arrJoin() {
+    const arr = ["Sic", "Parvis", "Magna"];
+    console.log(arr.join("-"));
+}
+
+// arrJoin();
+
+// Array.keys()
+// Returns an iterator for all the keys of the array
+
+function arrKeys() {
+    const arr = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+    const iterator = arr.keys();
+
+    for (const key of iterator) {
+        console.log(key);
+    }
+}
+
+// arrKeys();
+
+// Array.map()
+// Iterates the elements and performs a callback.
+
+function arrMap() {
+    const arr = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+    arr.map((element) => console.log(element + "-" + 1));
+}
+
+// arrMap();
+
+// Array.of()
+// Makes and array out of the number of arguments provided
+
+function arrOf() {
+    const arr = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+    console.log(Array.of(...arr));
+}
+
+// arrOf();
+
+// Array.pop() && Array.push()
+// Pops the last element from the array
+
+function arrPopPush() {
+    const arr = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+    arr.pop();
+    console.log(arr);
+    arr.push("Sempar-Fi");
+    console.log(arr);
+}
+
+// arrPopPush();
+
+// Array.reduce()
+// Reduces the array to a single summed element
+
+function arrReduce() {
+    const array1 = [1, 2, 3, 4];
+
+    const initialValue = 0;
+    const sumWithInitial = array1.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+    );
+
+    console.log(sumWithInitial);
+}
+
+// arrReduce();
+
+// Array.reverse()
+// Reverses the original array. toReversed to return a new array
+
+function arrReverse() {
+    const arr = [
+        "f",
+        "l",
+        "e",
+        "s",
+        "r",
+        "u",
+        "o",
+        "Y",
+        " ",
+        "k",
+        "c",
+        "u",
+        "F",
+        " ",
+        "o",
+        "G",
+    ];
+    console.log("Original: ", arr);
+    arr.reverse();
+    console.log("Reversed: ", arr);
+}
+
+// arrReverse();
+
+// Array.shift()
+// pop() pops the last element. shift() pops the first
+
+function arrShift() {
+    const arr = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+    const removed = arr.shift();
+    console.log("Removed Element: ", removed);
+    console.log("Remaining Array: ", arr);
+}
+
+// arrShift();
+
+// Array.slice()
+// Slice from the given range. The endposition is non-inclusive
+
+// If the function has comments then the code is probably not mine... and taken from MDN
+function arrSlice() {
+    const animals = ["ant", "bison", "camel", "duck", "elephant"];
+
+    console.log(animals.slice(2));
+    // Expected output: Array ["camel", "duck", "elephant"]
+
+    console.log(animals.slice(2, 4));
+    // Expected output: Array ["camel", "duck"]
+
+    console.log(animals.slice(1, 5));
+    // Expected output: Array ["bison", "camel", "duck", "elephant"]
+
+    console.log(animals.slice(-2));
+    // Expected output: Array ["duck", "elephant"]
+
+    console.log(animals.slice(2, -1));
+    // Expected output: Array ["camel", "duck"]
+
+    console.log(animals.slice());
+    // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
+}
+
+// arrSlice();
+
+// Array.sort()
+// Sorts the original array. In ascending order according to the UTF-16 code
+// toSorted to return a new array
+
+function arrSort() {
+    const arr = ["3", "4", "1", "5", "2"];
+    const arr1 = [3, 4, 2, 1, 5];
+    const arr2 = ["Sic", "Parvis", "Magna", "Sempar-Fi"];
+
+    console.log("Array: ", arr.sort());
+    console.log("Array1: ", arr1.sort());
+    console.log("Array2: ", arr2.sort());
+}
+
+// arrSort();
+
+// Array.splice()
+// Removes of replaces an element from the array. toSpliced to return a new array
+
+function arrSplice() {
+    const months = ["Jan", "March", "April", "June"];
+    months.splice(1, 0, "Feb");
+    // Inserts at index 1
+    console.log(months);
+    // Expected output: Array ["Jan", "Feb", "March", "April", "June"]
+
+    months.splice(4, 1, "May");
+    // Replaces 1 element at index 4
+    console.log(months);
+    // Expected output: Array ["Jan", "Feb", "March", "April", "May"]
+}
+
+// arrSplice();
+
+// Array.toString()
+
+function arrToString() {
+    const arr = ["Sic", "Parvis", "Magna"];
+    console.log(arr.toString());
+}
+
+// arrToString();
+
+// Array.unshift()
+// Reversed push(). Returns the new length of the array
+
+function arrUnshift() {
+    const arr = ["Parvis", "Magna"];
+    console.log("Original: ", arr);
+    arr.unshift("Sic");
+    console.log("Unshifted: ", arr);
+}
+
+// arrUnshift();
+
+// Array.values()
+// Like keys it gives an iterator with values. Default implementation of Symbol.iterator
+
+function arrValues() {
+    const array1 = ["a", "b", "c"];
+    const iterator = array1.values();
+
+    for (const value of iterator) {
+        console.log(value);
+    }
+}
+
+// arrValues();
+
+// Array.with()
+// Returns a new array with the values replaced at the provided index by the provided value
+
+function arrWith() {
+    const arr = [1, 2, 3, 4, 5];
+    console.log(arr.with(2, 6)); // [1, 2, 6, 4, 5]
+    console.log(arr); // [1, 2, 3, 4, 5]
+}
+
+// arrWith();
