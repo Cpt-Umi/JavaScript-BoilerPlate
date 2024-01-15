@@ -411,3 +411,201 @@ function jsValueOf() {
 // jsValueOf();
 
 // That's All Folks!
+
+// Array Methods
+
+// Array.iterator
+
+function arrIterator() {
+    const arr = ["Hello", "My", "Fren"];
+    const iterator = arr[Symbol.iterator]();
+
+    for (const values of iterator) {
+        console.log(values);
+    }
+}
+
+// arrIterator();
+
+// Good to know! :
+
+function logIterable(it) {
+    if (typeof it[Symbol.iterator] !== "function") {
+        console.log(it, "is not iterable.");
+        return;
+    }
+    for (const letter of it) {
+        console.log(letter);
+    }
+}
+
+// logIterable(["a", "b", "c"]);
+// logIterable("abc");
+// logIterable(123);
+
+// Array.at()
+// Can take negative values and work in reverse
+
+function arrAt() {
+    const arr = ["Hello", "My", "Fren"];
+    console.log(arr.at(-1));
+}
+
+// arrAt();
+
+// Array.concat()
+// Returns a new array. Concats two array into one
+
+function arrConcat() {
+    const arr = ["lorem", "epsum"];
+    const arr1 = ["Hello", "Fren"];
+    console.log(arr.concat(arr1));
+    console.log(arr.concat("eepy"));
+}
+
+// arrConcat();
+
+// Array.copyWithin()
+// Modifies the array. Copies items from start to exclusive end
+// Start copying to the target and after
+
+function arrCopyWithin() {
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    console.log("Original: ", arr);
+    arr.copyWithin(1, 5, 8);
+    console.log("copyWithin with End: ", arr);
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    arr.copyWithin(1, 5);
+    console.log("copyWithin without End: ", arr);
+}
+
+// arrCopyWithin();
+
+// Array.entries()
+// Much like the iterator. Returns a key value pair. Value with its index
+// Returns an iterable array
+
+function arrEntries() {
+    const arr = ["Hello", "Fren"];
+    const iterator = arr.entries();
+
+    for (let value of iterator) {
+        console.log(value);
+    }
+}
+
+// arrEntries();
+
+// Array.every()
+// Returns if all the elements of the array pass a certain test
+
+const isLenFive = (value) => value.length == 5;
+
+function arrEvery() {
+    const arr = ["Hello", "World"];
+    console.log(arr.every(isLenFive));
+}
+
+// arrEvery();
+
+// Array.fill()
+// Fill the given range with the provided target value
+// Returns a modified array
+
+function arrFill() {
+    const arr = [1, 2, 3, 4, 5];
+    console.log("Original: ", arr);
+    console.log("Filler Array: ", arr.fill(0, 0, 5));
+}
+
+// arrFill();
+
+// Array.filter
+// Returns a shallow copy of the original array with only the elements which qualified the required test
+
+function arrFilter() {
+    const arr = ["spray", "elite", "exuberant", "destruction", "present"];
+    console.log(arr.filter((word) => word.length > 9));
+}
+
+// arrFilter();
+
+// Array.find()
+// Finds and element in the array using a test function. Returns undefined if not found
+
+// The find() method of Array instances returns the first element in the provided array that satisfies the provided testing function.
+// If no values satisfy the testing function, undefined is returned.
+
+// If you need the index of the found element in the array, use findIndex().
+// If you need to find the index of a value, use indexOf().
+// (It's similar to findIndex(), but checks each element for equality with the value instead of using a testing function.)
+// If you need to find if a value exists in an array, use includes().
+// Again, it checks each element for equality with the value instead of using a testing function.
+// If you need to find if any element satisfies the provided testing function, use some().
+
+function arrFind() {
+    const arr = [1, 2, 3, 21, 4, 5, 6, 21];
+    console.log(
+        "Find: ",
+        arr.find((value) => value > 20)
+    );
+    console.log(
+        "FindIndex: ",
+        arr.findIndex((value) => value > 20)
+    );
+    // Last item that is greater than 20
+    console.log(
+        "FindLast: ",
+        arr.findLast((value) => value > 20)
+    );
+    console.log(
+        "FindLastIndex: ",
+        arr.findLastIndex((value) => value > 20)
+    );
+    console.log("IndexOf: ", arr.indexOf(21));
+}
+
+// arrFind();
+
+// Array.flat()
+// Recursively unwinds nested array
+
+function arrFlat() {
+    const arr = [0, 1, [2, [3, [4, 5]]]];
+    console.log(arr.flat(Infinity));
+}
+
+// arrFlat();
+
+// Array.flatMap()
+// Returns a new flattened array based on a test condition
+
+function arrFlatMap() {
+    const arr1 = [1, 2, 1];
+    const result = arr1.flatMap((num) => (num === 2 ? [2, 2] : 1));
+    console.log(result);
+    // Expected output: Array [1, 2, 2, 1]
+}
+
+// arrFlatMap();
+
+// Array.forEach()
+// Runs a callback for each element of the array
+
+function arrForEach() {
+    const arr = [1, 2, 3, 4, 5];
+    arr.forEach((element) => console.log("Hey there! " + element));
+}
+
+// arrForEach();
+
+// Array.from()
+// Takes and array
+// Returns a shallow copy. Performs a callback for each element
+
+function arrFrom() {
+    const arr = [1, 2, 3];
+    console.log(Array.from(arr, (x) => x + x));
+}
+
+// arrFrom();
